@@ -1,0 +1,21 @@
+service: lambda-template-js
+
+frameworkVersion: '3'
+
+# Serverless plugins
+plugins:
+  - serverless-offline
+
+# Cloud Provider
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+# Functions
+functions:
+  hello:
+    handler: dist/index.sendHello
+    events: 
+      - http:
+          path: hello
+          method: get

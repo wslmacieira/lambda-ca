@@ -1,0 +1,30 @@
+{
+  "compilerOptions":{
+     "target":"es2020",
+     "outDir":"dist",
+     "rootDir":"./",
+     "strict":true,
+     "strictPropertyInitialization":false,
+     "moduleResolution":"node",
+     "baseUrl":"./",
+     "esModuleInterop":true,
+     "experimentalDecorators":true,
+     "emitDecoratorMetadata":true,
+     "skipLibCheck":true,
+     "forceConsistentCasingInFileNames":true,
+     "resolveJsonModule": true,
+     "paths": {
+      "@application/*": ["./src/application/*"],
+      "@infra/*": ["./src/infra/*"],
+      "@tests/*": ["./tests/*"]
+    },
+    "types": ["node", "jest"]
+  },
+  "include":[
+     "src/**/*.ts"
+  ],
+  "exclude":[
+     "node_modules",
+     "tests"
+  ]
+}
