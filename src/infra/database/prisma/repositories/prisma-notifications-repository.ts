@@ -3,6 +3,7 @@ import { NotificationsRepository } from '@application/repositories/notifications
 import { PrismaService } from '../prisma.service';
 import { PrismaNotificationsMapper } from '../mappers/prisma-notifications-mapper';
 import { inject, injectable } from 'tsyringe';
+import { RecipientNotFound } from '@application/use-cases/errors/recipient-not-found';
 
 @injectable()
 export class PrismaNotificationsRepository extends NotificationsRepository {
@@ -28,6 +29,10 @@ export class PrismaNotificationsRepository extends NotificationsRepository {
         recipientId,
       },
     });
+
+    if (notifications.length === 0) {
+      throw new RecipientNotFound();
+    }
 
     return notifications.map(PrismaNotificationsMapper.toDomain);
   }

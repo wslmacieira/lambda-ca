@@ -1,7 +1,8 @@
 import { chamadas } from '@application/middlewares';
+import { IHelloRepository } from '@application/repositories/hello.repository';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { formatResponse } from 'src/helpers/forma-response';
 import { inject, injectable } from 'tsyringe';
-import { IHelloRepository } from '../repositories/hello-repository';
 
 @injectable()
 export class HelloController {
@@ -13,21 +14,12 @@ export class HelloController {
     const { message } = await this.helloRepository.sendMessage();
     let response: APIGatewayProxyResult;
     try {
-      response = {
-        statusCode: 200,
-        body: JSON.stringify({
-          message,
-          // input: _event
-        }),
-      };
-    } catch (err: unknown) {
+      // throw new Error('erro')
+      response = formatResponse(200, { message })
+    } catch (err: any) {
       console.error(err);
-      response = {
-        statusCode: 500,
-        body: JSON.stringify({
-          message: err instanceof Error ? err.message : 'some error happened',
-        }),
-      };
+      response = formatResponse(err.statusCode ?? 500,
+        { message: err instanceof Error ? err.message : 'some error happened' })
     }
 
     chamadas.interna.push({name: 'Hello Lambda', result: response});
