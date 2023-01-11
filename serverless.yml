@@ -35,3 +35,35 @@ functions:
       - http:
           path: notifications/from/{recipientId}
           method: get
+  count-from-recipient:
+    environment:
+      DATABASE_URL: file:./dev.db
+    handler: dist/index.countFromRecipient
+    events: 
+      - http:
+          path: notifications/count/from/{recipientId}
+          method: get
+  cancel-notification:
+    environment:
+      DATABASE_URL: file:./dev.db
+    handler: dist/index.cancelNotification
+    events: 
+      - http:
+          path: notifications/{notificationId}/cancel
+          method: patch
+  read-notification:
+    environment:
+      DATABASE_URL: file:./dev.db
+    handler: dist/index.readNotification
+    events: 
+      - http:
+          path: notifications/{notificationId}/read
+          method: patch
+  unread-notification:
+    environment:
+      DATABASE_URL: file:./dev.db
+    handler: dist/index.unreadNotification
+    events: 
+      - http:
+          path: notifications/{notificationId}/unread
+          method: patch

@@ -1,12 +1,12 @@
 import { chamadas } from '@application/middlewares';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { inject, injectable } from 'tsyringe';
-import { HelloRepository } from '../repositories/hello-repository';
+import { IHelloRepository } from '../repositories/hello-repository';
 
 @injectable()
 export class HelloController {
   constructor(
-    @inject("IHelloRepository") private helloRepository: HelloRepository
+    @inject("IHelloRepository") private helloRepository: IHelloRepository
   ) { }
 
   sendHello = async (_event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {

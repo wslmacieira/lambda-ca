@@ -1,4 +1,4 @@
-import { HelloRepository } from "../../infra/http/repositories/hello-repository";
+import { IHelloRepository } from "../../infra/http/repositories/hello-repository";
 import { inject, injectable } from "tsyringe";
 import { Hello } from "../entities/hello";
 
@@ -6,7 +6,7 @@ import { Hello } from "../entities/hello";
 export class SendHelloMessage {
 
   constructor(
-    @inject("IHelloRepository") private helloRepository: HelloRepository
+    @inject("IHelloRepository") private helloRepository: IHelloRepository
   ) {}
 
   async sendMessage(): Promise<Hello> {
