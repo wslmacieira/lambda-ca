@@ -1,7 +1,7 @@
 import { chamadas } from '@application/middlewares';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { inject, injectable } from 'tsyringe';
-import { HelloRepository } from '../repositories/HelloRepository';
+import { HelloRepository } from '../repositories/hello-repository';
 
 @injectable()
 export class HelloController {

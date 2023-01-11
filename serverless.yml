@@ -19,3 +19,19 @@ functions:
       - http:
           path: hello
           method: get
+  create-notification:
+    environment:
+      DATABASE_URL: file:./dev.db
+    handler: dist/index.createNotification
+    events: 
+      - http:
+          path: notifications
+          method: post
+  get-from-recipient:
+    environment:
+      DATABASE_URL: file:./dev.db
+    handler: dist/index.getFromRecipient
+    events: 
+      - http:
+          path: notifications/from/{recipientId}
+          method: get

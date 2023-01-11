@@ -1,6 +1,6 @@
-import { HelloRepository } from "../../infra/http/repositories/HelloRepository";
+import { HelloRepository } from "../../infra/http/repositories/hello-repository";
 import { inject, injectable } from "tsyringe";
-import { Hello } from "../entities/Hello";
+import { Hello } from "../entities/hello";
 
 @injectable()
 export class SendHelloMessage {

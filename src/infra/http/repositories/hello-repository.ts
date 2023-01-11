@@ -1,5 +1,5 @@
-import { Hello } from "../../../application/entities/Hello";
-import { IHelloRepository } from "../../../application/repositories/IHelloRepository";
+import { Hello } from "../../../application/entities/hello";
+import { IHelloRepository } from "../../../application/repositories/hello.repository";
 
 export class HelloRepository implements IHelloRepository {
   async sendMessage(): Promise<Hello> {
