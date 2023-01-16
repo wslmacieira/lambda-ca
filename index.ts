@@ -1,12 +1,15 @@
 import { handler } from './src/lambda/hello'
-import { createNotificationHandler, 
-  getFromRecipientHandler, 
-  countFromRecipientHandler,
-  cancelNotificationHandler,
-  readNotificationHandler,
-  unreadNotificationHandler
- } from './src/lambda/notification'
+
+// TODO
 import { middlewareFactory } from './src/application/middlewares'
+import {
+	cancelNotificationHandler,
+	countFromRecipientHandler,
+	createNotificationHandler,
+	getFromRecipientHandler,
+	readNotificationHandler,
+	unreadNotificationHandler,
+} from './src/lambda/notification'
 
 export const sendHello = middlewareFactory(handler)
 export const createNotification = middlewareFactory(createNotificationHandler)

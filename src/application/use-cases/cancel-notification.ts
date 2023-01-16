@@ -7,7 +7,6 @@ interface CancelNotificationRequest {
 }
 
 type CancelNotificationResponse = void;
-
 @injectable()
 export class CancelNotification {
   constructor(
